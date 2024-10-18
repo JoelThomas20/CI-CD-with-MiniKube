@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffeeshopservice  # Changed deployment name
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: myapp  # This label should match the service selector
+  template:
+    metadata:
+      labels:
+        name: myapp  # Ensure this label matches the service selector
+    spec:
+      containers:
+        - name: myapp
+          image: joelthomas24/coffeeshop  # Change image name if needed
+          ports:
+            - containerPort: 80
